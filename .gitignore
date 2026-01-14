@@ -1,1 +1,3 @@
-.env
+.*
+!.gitignore
+results/no_change/fed_nochange_orderbooks.json
