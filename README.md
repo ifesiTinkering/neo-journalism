@@ -1,19 +1,21 @@
-# Cross-Platform Information Flow Analysis: Fed "No Change" Market
+# Cross-Platform Lead-Lag Analysis: Fed "No Change" Market
 
 ## Overview
 
-This repository analyzes **how information flows between Kalshi and Polymarket** for the **"No Change" market** within the Fed Decision in December 2025 event.
+This repository uses **VAR (Vector Autoregression)** to test for **predictive relationships** between Kalshi and Polymarket for the **"No Change" market** within the Fed Decision in December 2025 event.
 
 - **Event:** Fed Decision in December (contains multiple outcome markets)
 - **Market analyzed:** "No change in Fed interest rates" (one specific market within the event)
 - **Markets NOT analyzed:** "Down 25 bps", "Down 50+ bps", "Up 25+ bps", etc.
 
-Rather than just looking at price discovery, we examine multiple dimensions of the orderbook to understand which platform reacts first to new information across:
+**Important note on methodology:** VAR with Granger causality tests whether one platform's past values help **predict** the other platform's future values. This is a statistical predictive relationship, not proof of causation or "information flow." When we say "Polymarket leads," we mean Polymarket's past is useful for predicting Kalshi's future - not that information is necessarily flowing from one to the other.
 
-- **Price signals** - Do price changes appear on one platform first?
-- **Liquidity depth** - Do liquidity shifts propagate across platforms?
-- **Order imbalances** - Does buying/selling pressure transfer between markets?
-- **Book structure** - Do structural changes (levels, concentration) lead or lag?
+We examine multiple dimensions of the orderbook to test for lead-lag relationships:
+
+- **Price signals** - Does one platform's price change predict the other's?
+- **Liquidity depth** - Do liquidity changes on one platform predict changes on the other?
+- **Order imbalances** - Does order pressure on one platform predict the other's?
+- **Book structure** - Do structural changes on one platform predict the other's?
 
 **Market Question:** Will the Fed cut rates at the December 9-10, 2025 FOMC meeting?
 
@@ -24,9 +26,9 @@ Rather than just looking at price discovery, we examine multiple dimensions of t
 - 25+ bps increase (hike)
 
 **Key Findings:**
-1. **Price information** flows from Polymarket to Kalshi (Poly leads by ~30 min)
-2. **Liquidity and order flow** do NOT flow between platforms (independent dynamics)
-3. **Some structural signals** flow from Kalshi to Polymarket (weaker, less consistent)
+1. **Price metrics:** Polymarket's price changes predict Kalshi's (~30 min lag), but not vice versa
+2. **Liquidity/order flow metrics:** No significant predictive relationship in either direction
+3. **Book structure metrics:** Mixed/weak results (see discussion below)
 
 ---
 
@@ -153,7 +155,7 @@ Best Bid NO:
     Poly -> Kalshi:  F = 133.6, p = 0.0000 (SIGNIFICANT)
 ```
 
-A 1% move in Polymarket mid price predicts a 0.51% move in Kalshi mid price in the next 30-minute period. Price information consistently flows from Polymarket to Kalshi.
+A 1% move in Polymarket mid price predicts a 0.51% move in Kalshi mid price in the next 30-minute period.
 
 ### All Variables Summary
 
@@ -165,9 +167,31 @@ A 1% move in Polymarket mid price predicts a 0.51% move in Kalshi mid price in t
 | num_levels_yes | POLY | Poly moves -> Kalshi follows (0.06x) |
 | depth_5c_no | KALSHI | Kalshi moves -> Poly follows (-0.20x) |
 | vwap_no | KALSHI | Kalshi moves -> Poly follows (-0.05x) |
-| All others | - | No significant cross-platform flow |
+| All others | - | No significant predictive relationship |
 
 See `results/no_change/var_results.md` for the complete analysis with detailed explanations.
+
+### Why Price Metrics Show Predictive Relationships but Liquidity Metrics Don't
+
+The price metrics (mid, best_bid_yes, best_bid_no) show clear predictive relationships where Polymarket leads Kalshi. However, the liquidity-related metrics we tested show no significant cross-platform predictive power:
+
+**Liquidity metrics tested (no significant results):**
+- `depth_best_yes/no` - Size (in dollars/contracts) sitting at the best bid
+- `depth_top3_yes/no` - Sum of sizes at the top 3 price levels
+- `total_depth_yes/no` - Sum of all bid sizes in the orderbook
+- `imbalance_best/top3/total` - Ratio of YES depth to NO depth
+
+**Possible explanations for why liquidity doesn't show the same pattern:**
+
+1. **Price is directly comparable; liquidity isn't.** Mid price on both platforms represents the same thing: implied probability of "No Change." But "depth at best bid" on Polymarket vs Kalshi may not be comparable - different tick sizes, different units (USDC vs USD), different typical order sizes.
+
+2. **Liquidity is platform-specific.** Price reflects collective belief about an external event (the Fed decision). Liquidity reflects who is willing to provide it on each platform - likely different market makers with different inventory constraints, risk limits, and strategies. There's no obvious reason liquidity on one platform should predict liquidity on the other.
+
+3. **The preprocessing may not capture liquidity dynamics well.** We looked at absolute changes in depth (delta). But maybe percentage changes, or changes relative to recent average depth, would be more meaningful. The "right" way to measure liquidity dynamics for this analysis isn't obvious.
+
+4. **30-minute intervals may be wrong for liquidity.** Prices might adjust over 30-minute windows in response to news. Liquidity dynamics might operate on different timescales - either faster (market makers adjusting inventory in seconds) or not time-synced at all.
+
+This is an open question worth further investigation.
 
 ---
 
