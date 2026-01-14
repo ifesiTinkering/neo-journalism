@@ -1,6 +1,6 @@
 ================================================================================
 CROSS-PLATFORM INFORMATION FLOW ANALYSIS
-Fed December 2025 Rate Decision: Polymarket vs Kalshi
+Event: Fed Decision in December 2025 | Market: No Change
 ================================================================================
 
 Loading results/no_change/fed_nochange_30min_preprocessed.csv...

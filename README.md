@@ -1,8 +1,14 @@
-# Fed December 2025 Rate Decision: Cross-Platform Information Flow Analysis
+# Cross-Platform Information Flow Analysis: Fed "No Change" Market
 
 ## Overview
 
-This repository analyzes **how information flows between Kalshi and Polymarket** for the Federal Reserve December 2025 interest rate decision market. Rather than just looking at price discovery, we examine multiple dimensions of the orderbook to understand which platform reacts first to new information across:
+This repository analyzes **how information flows between Kalshi and Polymarket** for the **"No Change" market** within the Fed Decision in December 2025 event.
+
+- **Event:** Fed Decision in December (contains multiple outcome markets)
+- **Market analyzed:** "No change in Fed interest rates" (one specific market within the event)
+- **Markets NOT analyzed:** "Down 25 bps", "Down 50+ bps", "Up 25+ bps", etc.
+
+Rather than just looking at price discovery, we examine multiple dimensions of the orderbook to understand which platform reacts first to new information across:
 
 - **Price signals** - Do price changes appear on one platform first?
 - **Liquidity depth** - Do liquidity shifts propagate across platforms?

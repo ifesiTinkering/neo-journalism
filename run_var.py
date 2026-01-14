@@ -78,7 +78,7 @@ After running both regressions, we use Granger causality tests:
     - If both significant: Bidirectional price discovery
     - If neither significant: No lead-lag relationship
 
-For the Fed December 2025 market, we found:
+For the "No Change" market (Fed Decision in December 2025 event), we found:
     - Poly → Kalshi: F=112.2, p<0.0001 (SIGNIFICANT)
     - Kalshi → Poly: F=0.4, p=0.549 (not significant)
 
@@ -921,7 +921,7 @@ FINAL INTERPRETATION
 def main():
     print("=" * 80)
     print("CROSS-PLATFORM INFORMATION FLOW ANALYSIS")
-    print("Fed December 2025 Rate Decision: Polymarket vs Kalshi")
+    print("Event: Fed Decision in December 2025 | Market: No Change")
     print("=" * 80)
 
     # -------------------------------------------------------------------------
