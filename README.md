@@ -76,6 +76,8 @@ results/no_change/
 
 The analysis uses orderbook snapshots from both platforms over a 20-day window (Nov 16 - Dec 6, 2025). Polymarket snapshots are fetched first (~20,000 snapshots), then Kalshi orderbooks are queried at matching timestamps.
 
+**Why December 6 as the end date?** The FOMC meeting was December 9-10, 2025. We intentionally stop before the resolution to analyze price discovery dynamics while the outcome is still uncertain. Including data near or after resolution would distort the analysis - prices converge to 0 or 1 as the outcome becomes known, which reflects resolution mechanics rather than information processing between platforms.
+
 ### Preprocessed Variables (4 Tiers)
 
 For each platform (Polymarket and Kalshi), we extract 19 orderbook variables organized into 4 tiers:
