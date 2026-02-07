@@ -1,6 +1,6 @@
 # What will Bitcoin hit in February?
 
-**2 cross-event relationships found**
+**2 cross-event relationships found** (filtered for $1M+ volume)
 
 | Related Market | Link | Direction | Reason |
 |:---------------|:-----|:----------|:-------|

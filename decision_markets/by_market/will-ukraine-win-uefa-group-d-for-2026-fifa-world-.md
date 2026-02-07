@@ -1,6 +1,6 @@
 # Will Ukraine win UEFA Group D for 2026 FIFA World Cup?
 
-**1 cross-event relationships found**
+**1 cross-event relationships found** (filtered for $1M+ volume)
 
 | Related Market | Link | Direction | Reason |
 |:---------------|:-----|:----------|:-------|

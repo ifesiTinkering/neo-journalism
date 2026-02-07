@@ -1,6 +1,6 @@
 # Will Israel annex Gaza territory by June 30 2026?
 
-**1 cross-event relationships found**
+**1 cross-event relationships found** (filtered for $1M+ volume)
 
 | Related Market | Link | Direction | Reason |
 |:---------------|:-----|:----------|:-------|

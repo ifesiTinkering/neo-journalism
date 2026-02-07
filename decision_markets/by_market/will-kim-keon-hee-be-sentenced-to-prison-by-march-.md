@@ -1,6 +1,6 @@
 # Will Kim Keon Hee be sentenced to prison by March 31?
 
-**1 cross-event relationships found**
+**1 cross-event relationships found** (filtered for $1M+ volume)
 
 | Related Market | Link | Direction | Reason |
 |:---------------|:-----|:----------|:-------|

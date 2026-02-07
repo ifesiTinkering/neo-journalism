@@ -1,6 +1,6 @@
 # US takes Panama Canal before 2027?
 
-**1 cross-event relationships found**
+**1 cross-event relationships found** (filtered for $1M+ volume)
 
 | Related Market | Link | Direction | Reason |
 |:---------------|:-----|:----------|:-------|

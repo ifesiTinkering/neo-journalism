@@ -1,6 +1,6 @@
 # Which NBA players will be traded this season?
 
-**1 cross-event relationships found**
+**1 cross-event relationships found** (filtered for $1M+ volume)
 
 | Related Market | Link | Direction | Reason |
 |:---------------|:-----|:----------|:-------|
